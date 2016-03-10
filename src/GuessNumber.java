@@ -23,11 +23,11 @@ public class GuessNumber {
 
     public static void guess(int min, int max)
     {
-
+        System.out.println("Max and min values are : " + min + " : " + max);
         int median = (min+max)/2;
         Scanner scanner = new Scanner(System.in);
         int answer = 1;
-        System.out.println("Is the number less than " + median + "? Answer 1 if yes and 0 if no : ");
+        System.out.println("Is this your number? " + median + ". Answer 2 if yes. If greater than " + median + "? then answer 1 and 0 if less than  : ");
 
         try{
              answer = scanner.nextInt();
@@ -39,20 +39,18 @@ public class GuessNumber {
 
         if(answer == 1)
         {
-            //If number is less than median
-            max = median - 1;
+
+            min = median; //If number is greater than median
             guess(min,max);
+
         }else if(answer == 0)
         {
-            if(min == max)
-                System.out.println("Your number is " + max);
-            else
-            {
-                min = median + 1; //If number is greater than median
-                guess(min,max);
-            }
+            //If number is less than median
+            max = median;
+            guess(min,max);
 
-
+        }else {
+            System.out.println("Your number is " + median);
         }
 
     }
